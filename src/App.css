@@ -23,3 +23,38 @@
   background-color: hsl(var(--primary) / 0.2);
 }
 
+/* Fixed typewriter effect */
+.typewriter-container {
+  width: 100%;
+  overflow: hidden; /* Ensures the text doesn't cause layout shifts */
+}
+
+.typewriter {
+  border-right: 2px solid hsl(var(--primary));
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: 
+    typing 3s steps(40) 1s forwards,
+    blink-caret 0.75s step-end infinite alternate;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: hsl(var(--primary)); }
+}
+
+/* Project card hover effects */
+.project-card {
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}

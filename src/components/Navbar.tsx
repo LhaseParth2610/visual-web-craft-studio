@@ -32,7 +32,7 @@ const Navbar = () => {
       )}
     >
       <div className="container flex items-center justify-between">
-        <div className="flex-1">
+        <div className="flex-1 md:flex-none">
           <a 
             href="#hero" 
             className="text-xl font-display font-bold gradient-text group transition-all"

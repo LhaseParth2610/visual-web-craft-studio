@@ -15,24 +15,12 @@ type Project = {
   repoUrl: string;
   date: string;
   icon: React.ReactNode;
+  inProgress?: boolean;
 };
 
 const projects: Project[] = [
   {
     id: 1,
-    title: "Fantasy Cricket Team Optimizer",
-    description: "ML system for fantasy Champions Trophy ODI team selection",
-    details: [
-      "Built a machine learning system for a gameathon to optimize fantasy Champions trophy ODI team selection using player data.",
-      "Applied linear programming (PuLP) to maximize performance under constraints."
-    ],
-    tags: ["Python", "PuLP", "BeautifulSoup", "Pandas", "Docker"],
-    repoUrl: "https://github.com/LhaseParth2610",
-    date: "February 2025",
-    icon: <Code className="h-5 w-5 text-primary" />
-  },
-  {
-    id: 2,
     title: "Multi-Disease Predictor",
     description: "Full-stack ML app to predict 8 critical diseases using integrated models",
     details: [
@@ -48,7 +36,7 @@ const projects: Project[] = [
     icon: <Beaker className="h-5 w-5 text-primary" />
   },
   {
-    id: 3,
+    id: 2,
     title: "Personal AI Assistant",
     description: "Tkinter-based AI assistant that automates everyday tasks with Mistral 7B",
     details: [
@@ -60,11 +48,12 @@ const projects: Project[] = [
     ],
     tags: ["Python", "Tkinter", "Mistral 7B", "Selenium", "Threading"],
     repoUrl: "https://github.com/LhaseParth2610",
-    date: "In Progress – May 2025",
-    icon: <Terminal className="h-5 w-5 text-primary" />
+    date: "May 2025",
+    icon: <Terminal className="h-5 w-5 text-primary" />,
+    inProgress: true
   },
   {
-    id: 4,
+    id: 3,
     title: "Waste Classification Pipeline",
     description: "End-to-end deep learning system for waste classification across six categories",
     details: [
@@ -79,6 +68,19 @@ const projects: Project[] = [
     repoUrl: "https://github.com/LhaseParth2610",
     date: "February 2025",
     icon: <FileCode className="h-5 w-5 text-primary" />
+  },
+  {
+    id: 4,
+    title: "Fantasy Cricket Team Optimizer",
+    description: "ML system for fantasy Champions Trophy ODI team selection",
+    details: [
+      "Built a machine learning system for a gameathon to optimize fantasy Champions trophy ODI team selection using player data.",
+      "Applied linear programming (PuLP) to maximize performance under constraints."
+    ],
+    tags: ["Python", "PuLP", "BeautifulSoup", "Pandas", "Docker"],
+    repoUrl: "https://github.com/LhaseParth2610",
+    date: "February 2025",
+    icon: <Code className="h-5 w-5 text-primary" />
   },
   {
     id: 5,
@@ -123,25 +125,29 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-16">
           {displayedProjects.map((project) => (
             <Card 
               key={project.id}
-              className="group border border-border/60 hover:border-primary/70 transition-all duration-300 hover:shadow-lg dark:shadow-primary/5 animate-fade-in bg-card/80 backdrop-blur-sm dark:bg-slate-800/50 flex flex-col h-full overflow-hidden"
+              className="group border border-border/60 hover:border-primary/70 transition-all duration-300 hover:shadow-lg hover:translate-y-[-5px] dark:shadow-primary/5 animate-fade-in bg-card/80 backdrop-blur-sm dark:bg-slate-800/50 flex flex-col h-full overflow-hidden"
             >
-              <div className="absolute top-4 right-4 bg-primary/90 text-primary-foreground text-xs py-1 px-3 rounded-full font-mono shadow-sm">
+              <div className="absolute top-0 right-0 bg-primary/90 text-primary-foreground text-xs py-1 px-3 rounded-bl-lg font-mono shadow-sm flex items-center gap-1.5">
+                {project.inProgress && <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>}
                 {project.date}
               </div>
               
               <CardHeader className="pb-2 relative">
                 <div className="absolute -left-10 -top-10 w-20 h-20 rounded-full bg-primary/5 dark:bg-primary/10 z-0"></div>
-                <CardTitle className="text-xl font-bold flex items-center gap-2 z-10">
-                  <div className="p-2 rounded-lg bg-primary/10 dark:bg-primary/20">
+                <CardTitle className="text-xl font-bold flex items-center gap-3 z-10">
+                  <div className="p-2.5 rounded-lg bg-primary/10 dark:bg-primary/20 group-hover:bg-primary/30 transition-colors">
                     {project.icon}
                   </div>
                   {project.title}
                 </CardTitle>
-                <CardDescription className="text-muted-foreground font-medium">
+                <CardDescription className="text-muted-foreground font-medium text-sm mt-1">
                   {project.description}
                 </CardDescription>
               </CardHeader>
@@ -167,7 +173,7 @@ const Projects = () => {
                       variant="outline"
                       className="bg-primary/5 hover:bg-primary/10 text-primary border-primary/20 font-mono text-xs"
                     >
-                      +{project.tags.length - 5} more
+                      +{project.tags.length - 5}
                     </Badge>
                   )}
                 </div>
