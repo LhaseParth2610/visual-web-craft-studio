@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Terminal } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
@@ -54,6 +54,7 @@ const Contact = () => {
             Get In <span className="gradient-text">Touch</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <span className="font-mono text-primary">$ contact --open</span><br />
             Have a project in mind? Want to collaborate? Feel free to reach out and I'll get back to you as soon as possible.
           </p>
         </div>
@@ -63,9 +64,12 @@ const Contact = () => {
             {/* Contact Info */}
             <div className="flex flex-col justify-between">
               <div>
-                <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+                <h3 className="text-2xl font-semibold mb-6 font-mono flex items-center gap-2">
+                  <Terminal className="h-5 w-5 text-primary" />
+                  Contact Information
+                </h3>
                 <p className="text-muted-foreground mb-8">
-                  Fill up the form and I'll get back to you within 24 hours.
+                  Ready to turn ideas into reality? Let's connect and build something great together.
                 </p>
 
                 <div className="space-y-6">
@@ -75,7 +79,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="font-medium">Phone</p>
-                      <p className="text-muted-foreground">+1 (123) 456-7890</p>
+                      <p className="text-muted-foreground font-mono">8767380619</p>
                     </div>
                   </div>
 
@@ -85,7 +89,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="font-medium">Email</p>
-                      <p className="text-muted-foreground">hello@example.com</p>
+                      <p className="text-muted-foreground font-mono">parthlhase49@gmail.com</p>
                     </div>
                   </div>
 
@@ -95,7 +99,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="font-medium">Location</p>
-                      <p className="text-muted-foreground">San Francisco, CA</p>
+                      <p className="text-muted-foreground">Pune, Maharashtra</p>
                     </div>
                   </div>
                 </div>
@@ -104,18 +108,22 @@ const Contact = () => {
               <div className="mt-12">
                 <h4 className="font-medium mb-4">Connect with me</h4>
                 <div className="flex gap-4">
-                  {["github", "twitter", "linkedin", "instagram"].map((social) => (
-                    <a
-                      key={social}
-                      href={`https://${social}.com`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2.5 rounded-full bg-muted hover:bg-primary/10 hover:text-primary transition-colors duration-200"
-                    >
-                      <span className="sr-only">{social}</span>
-                      <div className="w-5 h-5"></div>
-                    </a>
-                  ))}
+                  <a
+                    href="https://github.com/LhaseParth2610"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2.5 rounded-full bg-muted hover:bg-primary/10 hover:text-primary transition-colors duration-200"
+                  >
+                    <Github className="w-5 h-5" />
+                  </a>
+                  <a
+                    href="https://linkedin.com/in/parth-lhase-60342a330"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2.5 rounded-full bg-muted hover:bg-primary/10 hover:text-primary transition-colors duration-200"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                  </a>
                 </div>
               </div>
             </div>
@@ -135,6 +143,7 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
+                      className="font-mono"
                     />
                   </div>
 
@@ -150,6 +159,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
+                      className="font-mono"
                     />
                   </div>
 
@@ -164,6 +174,7 @@ const Contact = () => {
                       value={formData.subject}
                       onChange={handleChange}
                       required
+                      className="font-mono"
                     />
                   </div>
 
@@ -179,16 +190,17 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleChange}
                       required
+                      className="font-mono"
                     />
                   </div>
 
-                  <Button type="submit" className="w-full rounded-lg" disabled={isSubmitting}>
+                  <Button type="submit" className="w-full rounded-lg font-mono" disabled={isSubmitting}>
                     {isSubmitting ? (
                       "Sending..."
                     ) : (
                       <>
                         <Send className="h-4 w-4 mr-2" />
-                        Send Message
+                        Execute send_message.py
                       </>
                     )}
                   </Button>

@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Code, Briefcase, User, Heart } from "lucide-react";
+import { Code, Briefcase, User, Terminal, Github, Flask } from "lucide-react";
 
 const About = () => {
   const [activeTab, setActiveTab] = useState("about");
@@ -15,14 +15,14 @@ const About = () => {
             <div className="w-full aspect-square relative z-10 rounded-2xl overflow-hidden shadow-xl animate-fade-right">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/30 mix-blend-multiply"></div>
               <img 
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
                 alt="Profile" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="absolute top-10 -right-6 w-36 h-36 bg-accent rounded-lg shadow-lg hidden md:flex flex-col items-center justify-center text-white p-4 rotate-6">
-              <span className="text-4xl font-bold">5+</span>
-              <span className="text-sm text-center">Years Experience</span>
+              <span className="text-4xl font-bold">AI</span>
+              <span className="text-sm text-center">& Data Science</span>
             </div>
           </div>
 
@@ -47,12 +47,12 @@ const About = () => {
                   About
                 </TabsTrigger>
                 <TabsTrigger
-                  value="experience"
+                  value="education"
                   className={`data-[state=active]:bg-primary/10 data-[state=active]:text-primary dark:data-[state=active]:bg-primary/20 px-5 py-2.5 rounded-lg transition-all`}
-                  onClick={() => setActiveTab("experience")}
+                  onClick={() => setActiveTab("education")}
                 >
                   <Briefcase className="h-4 w-4 mr-2" />
-                  Experience
+                  Education
                 </TabsTrigger>
                 <TabsTrigger
                   value="technical"
@@ -67,40 +67,31 @@ const About = () => {
               <TabsContent value="about" className="mt-0">
                 <div className="space-y-4">
                   <p className="text-lg text-muted-foreground">
-                    I'm a passionate developer with a focus on creating beautiful and functional web applications. 
-                    With over 5 years of experience in the industry, I've worked on a variety of projects from small business websites to complex enterprise applications.
+                    I'm a passionate AI & Data Science Engineer with a focus on creating intelligent and innovative solutions. 
+                    Currently pursuing my BTech in Artificial Intelligence and Data Science, I love working on projects 
+                    that combine advanced algorithms with practical applications.
                   </p>
                   <p className="text-lg text-muted-foreground">
-                    My goal is to create digital experiences that are not only visually stunning but also intuitive and accessible to all users. I believe that great design and solid engineering can make a real difference in people's lives.
+                    My projects range from machine learning systems for fantasy cricket team optimization to disaster management platforms 
+                    and lightweight Linux distributions for education. I'm always looking to push the boundaries of what's possible through code.
                   </p>
                   <div className="flex items-center pt-4">
-                    <Heart className="h-5 w-5 text-accent mr-2" />
-                    <p className="font-medium">What I love: Clean code, creative solutions, and continuous learning</p>
+                    <Terminal className="h-5 w-5 text-accent mr-2" />
+                    <p className="font-medium font-mono">$ passion --list="AI, Data Science, Linux, Python, Full-stack development"</p>
                   </div>
                 </div>
               </TabsContent>
 
-              <TabsContent value="experience" className="mt-0">
+              <TabsContent value="education" className="mt-0">
                 <div className="space-y-6">
                   <div className="border-l-2 border-primary/30 pl-4">
-                    <h3 className="text-xl font-semibold">Senior Developer</h3>
-                    <p className="text-primary">Company Name • 2021 - Present</p>
+                    <h3 className="text-xl font-semibold">BTech in Artificial Intelligence and Data Science</h3>
+                    <p className="text-primary">AISSMS Institute Of Information Technology • 2022 - Present</p>
                     <p className="mt-2 text-muted-foreground">
-                      Led development of multiple web applications, mentored junior developers, and implemented CI/CD pipelines.
+                      Pune, Maharashtra
                     </p>
-                  </div>
-                  <div className="border-l-2 border-primary/30 pl-4">
-                    <h3 className="text-xl font-semibold">Web Developer</h3>
-                    <p className="text-primary">Another Company • 2018 - 2021</p>
-                    <p className="mt-2 text-muted-foreground">
-                      Developed and maintained client websites, implemented responsive designs, and optimized performance.
-                    </p>
-                  </div>
-                  <div className="border-l-2 border-primary/30 pl-4">
-                    <h3 className="text-xl font-semibold">Junior Developer</h3>
-                    <p className="text-primary">First Company • 2016 - 2018</p>
-                    <p className="mt-2 text-muted-foreground">
-                      Assisted in the development of web applications, fixed bugs, and implemented new features.
+                    <p className="mt-2 font-mono text-sm text-muted-foreground">
+                      <span className="text-primary">></span> Studying cutting-edge AI and data science technologies
                     </p>
                   </div>
                 </div>
@@ -109,32 +100,33 @@ const About = () => {
               <TabsContent value="technical" className="mt-0">
                 <div className="space-y-4">
                   <p className="text-lg text-muted-foreground">
-                    I specialize in modern web technologies and frameworks, with a focus on creating performant, accessible, and responsive applications.
+                    I specialize in AI, data science and full-stack development, with a focus on creating intelligent, 
+                    efficient and scalable applications.
                   </p>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
                     <div className="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm">
-                      <h4 className="font-semibold mb-2">Frontend</h4>
+                      <h4 className="font-semibold mb-2">Languages</h4>
                       <p className="text-muted-foreground">
-                        React, Next.js, TypeScript, Tailwind CSS, Framer Motion
+                        Python, C++, HTML/CSS, JavaScript, SQL
                       </p>
                     </div>
                     <div className="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm">
-                      <h4 className="font-semibold mb-2">Backend</h4>
+                      <h4 className="font-semibold mb-2">Frameworks</h4>
                       <p className="text-muted-foreground">
-                        Node.js, Express, Python, Django, PostgreSQL
+                        TensorFlow, Streamlit, Flask
                       </p>
                     </div>
                     <div className="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm">
-                      <h4 className="font-semibold mb-2">DevOps</h4>
+                      <h4 className="font-semibold mb-2">Developer Tools</h4>
                       <p className="text-muted-foreground">
-                        Docker, GitHub Actions, AWS, Netlify, Vercel
+                        VS Code, Google Cloud Platform, Git, Jupyter Notebook, Docker
                       </p>
                     </div>
                     <div className="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm">
-                      <h4 className="font-semibold mb-2">Tools</h4>
+                      <h4 className="font-semibold mb-2">Libraries</h4>
                       <p className="text-muted-foreground">
-                        Git, VS Code, Figma, Adobe XD, Notion
+                        Keras, Pandas, NumPy, Matplotlib, Scikit-learn, Seaborn, BeautifulSoup
                       </p>
                     </div>
                   </div>

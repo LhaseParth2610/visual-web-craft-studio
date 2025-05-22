@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,8 +7,8 @@
 
 @layer base {
   :root {
-    --background: 226 30% 96%;
-    --foreground: 224 71% 4%;
+    --background: 224 30% 96%;
+    --foreground: 222 71% 4%;
 
     --card: 0 0% 100%;
     --card-foreground: 224 71% 4%;
@@ -16,7 +16,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 224 71% 4%;
 
-    --primary: 240 60% 50%;
+    --primary: 231 66% 53%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 220 34% 15%;
@@ -48,7 +48,7 @@
   }
 
   .dark {
-    --background: 224 71% 4%;
+    --background: 226 71% 4%;
     --foreground: 213 31% 91%;
 
     --card: 224 71% 6%;
@@ -57,7 +57,7 @@
     --popover: 224 71% 6%;
     --popover-foreground: 213 31% 91%;
 
-    --primary: 210 80% 60%;
+    --primary: 210 100% 66%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 34% 15%;
@@ -127,4 +127,46 @@
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
   }
+  
+  /* Terminal-like typing effect for the nerdy look */
+  .typewriter {
+    border-right: 2px solid;
+    @apply border-primary;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 3s steps(40) 1s 1 normal both, blink 1s steps(1) infinite;
+  }
+  
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  @keyframes blink {
+    50% { border-color: transparent }
+  }
+  
+  /* Matrix-like animation for background elements */
+  .matrix-bg {
+    @apply relative z-0 overflow-hidden;
+  }
+  
+  .matrix-bg::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)), 
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%2300ff00' fill-opacity='0.1' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+    z-index: -1;
+    opacity: 0.5;
+  }
+}
+
+/* Custom terminal prompt styling */
+.terminal-prompt::before {
+  content: "$ ";
+  @apply text-primary font-bold;
 }
