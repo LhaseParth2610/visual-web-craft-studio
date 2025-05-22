@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Github, ExternalLink, Code, Terminal, Flask, Database } from "lucide-react";
+import { Github, ExternalLink, Code, Terminal, Beaker, Database } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 type ProjectCategory = "all" | "ai" | "app" | "linux";

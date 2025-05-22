@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Code, Briefcase, User, Terminal, Github, Flask } from "lucide-react";
+import { Code, Briefcase, User, Terminal, Github, Beaker } from "lucide-react";
 
 const About = () => {
   const [activeTab, setActiveTab] = useState("about");
