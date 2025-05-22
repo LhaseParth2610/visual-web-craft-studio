@@ -30,15 +30,9 @@ const Navbar = () => {
           : "bg-transparent"
       )}
     >
-      {/* Uncomment one of the following options: */}
-
-      {/* Option 1: Center the Navbar */}
-      <div className="container flex items-center justify-center">
-
-      {/* Option 2: Align the Navbar to the Right */}
-      {/* <div className="container flex items-center justify-end"> */}
+      <div className="container flex items-center">
         {/* Logo */}
-        <div className="flex-1 md:flex-none">
+        <div className="flex-shrink-0">
           <a
             href="#hero"
             className="text-xl font-display font-bold gradient-text group transition-all"
@@ -47,8 +41,8 @@ const Navbar = () => {
           </a>
         </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center justify-end flex-1">
+        {/* Desktop Navigation - Centered with Subtle Left Shift via Transform */}
+        <nav className="hidden md:flex flex-1 justify-center" style={{ transform: "translateX(-12px)" }}>
           <ul className="flex gap-8">
             {["About", "Projects", "Skills", "Contact"].map((item) => (
               <li key={item}>
@@ -64,7 +58,7 @@ const Navbar = () => {
         </nav>
 
         {/* Theme Switcher and Mobile Menu */}
-        <div className="flex items-center gap-4 flex-1 justify-end">
+        <div className="flex items-center gap-4 ml-auto">
           <ThemeSwitcher />
           <Button
             variant="ghost"
