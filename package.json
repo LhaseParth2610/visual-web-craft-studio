@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "type": "module",
 
-"homepage": "https://Lhaseparth2610.github.io/visual-web-craft-studio",
 "scripts": {
   "dev": "vite",
   "build": "vite build",
