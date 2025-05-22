@@ -128,22 +128,35 @@
     display: none;
   }
   
-  /* Terminal-like typing effect for the nerdy look */
-  .typewriter {
-    border-right: 2px solid;
-    @apply border-primary;
-    white-space: nowrap;
-    overflow: hidden;
-    animation: typing 3s steps(40) 1s 1 normal both, blink 1s steps(1) infinite;
+  /* Terminal-like typing effect for the nerdy look - FIXED */
+  .typewriter-container {
+    width: 100%;
   }
   
+  .typewriter {
+    border-right: 2px solid transparent;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: 
+      typing 3s steps(40) 1s forwards,
+      blink-caret 0.75s step-end infinite;
+  }
+
   @keyframes typing {
     from { width: 0 }
     to { width: 100% }
   }
   
-  @keyframes blink {
-    50% { border-color: transparent }
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: hsl(var(--primary)); }
+  }
+  
+  /* Animation to remove cursor after typing completes */
+  .typewriter.completed {
+    border-right-color: transparent;
+    animation: none;
   }
   
   /* Matrix-like animation for background elements */
@@ -163,10 +176,29 @@
     z-index: -1;
     opacity: 0.5;
   }
+
+  /* Animation for blob */
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
 }
 
 /* Custom terminal prompt styling */
 .terminal-prompt::before {
   content: "$ ";
   @apply text-primary font-bold;
+}
+
+/* Additional styling to enhance card hover effects */
+.card-hover-effect {
+  @apply transition-all duration-300;
+  transform-style: preserve-3d;
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-5px);
 }

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Github, ExternalLink, Code, Terminal, Beaker, Database, FastForward } from "lucide-react";
+import { Github, ExternalLink, Code, Terminal, Beaker, Database, FastForward, FileCode } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -65,6 +65,23 @@ const projects: Project[] = [
   },
   {
     id: 4,
+    title: "Waste Classification Pipeline",
+    description: "End-to-end deep learning system for waste classification across six categories",
+    details: [
+      "Engineered an end-to-end waste classification system for six categories (plastic, paper, metal, etc.) using deep learning.",
+      "Built a complete data pipeline from raw image ingestion to train-test split and preprocessing via modular YAML-driven configs.",
+      "Created category-specific folder structures and automated dataset splitting using scikit-learn and custom scripts.",
+      "Implemented Keras-based CNN model training with real-time image augmentation and classification report generation.",
+      "Used MLflow for tracking experiments and evaluation metrics; containerized with Docker for reproducibility.",
+      "Automated project execution via CLI-enabled Python scripts and parameterized config files (params.yaml)."
+    ],
+    tags: ["Python", "Keras", "Docker", "MLflow", "YAML", "CNN", "scikit-learn"],
+    repoUrl: "https://github.com/LhaseParth2610",
+    date: "February 2025",
+    icon: <FileCode className="h-5 w-5 text-primary" />
+  },
+  {
+    id: 5,
     title: "ResQ: Disaster Management System",
     description: "Prize-winning disaster management platform for emergency communication",
     details: [
@@ -76,7 +93,7 @@ const projects: Project[] = [
     icon: <Database className="h-5 w-5 text-primary" />
   },
   {
-    id: 5,
+    id: 6,
     title: "EduLite OS - Lightweight Linux",
     description: "Custom Linux distro for low-end hardware in education",
     details: [
@@ -94,7 +111,7 @@ const Projects = () => {
   const displayedProjects = showAll ? projects : projects.slice(0, 3);
 
   return (
-    <section id="projects" className="py-24 bg-gray-50/50 dark:bg-slate-900/20">
+    <section id="projects" className="py-24 bg-gradient-to-b from-gray-50/50 to-gray-100/30 dark:from-slate-900/20 dark:to-slate-800/30">
       <div className="container px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -106,19 +123,22 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {displayedProjects.map((project) => (
             <Card 
               key={project.id}
-              className="group border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg animate-fade-in bg-card/80 backdrop-blur-sm dark:bg-slate-800/50 flex flex-col h-full"
+              className="group border border-border/60 hover:border-primary/70 transition-all duration-300 hover:shadow-lg dark:shadow-primary/5 animate-fade-in bg-card/80 backdrop-blur-sm dark:bg-slate-800/50 flex flex-col h-full overflow-hidden"
             >
-              <div className="absolute top-4 right-4 bg-primary/90 text-white text-xs py-1 px-3 rounded-full font-mono">
+              <div className="absolute top-4 right-4 bg-primary/90 text-primary-foreground text-xs py-1 px-3 rounded-full font-mono shadow-sm">
                 {project.date}
               </div>
               
-              <CardHeader className="pb-2">
-                <CardTitle className="text-xl font-bold flex items-center gap-2">
-                  {project.icon}
+              <CardHeader className="pb-2 relative">
+                <div className="absolute -left-10 -top-10 w-20 h-20 rounded-full bg-primary/5 dark:bg-primary/10 z-0"></div>
+                <CardTitle className="text-xl font-bold flex items-center gap-2 z-10">
+                  <div className="p-2 rounded-lg bg-primary/10 dark:bg-primary/20">
+                    {project.icon}
+                  </div>
                   {project.title}
                 </CardTitle>
                 <CardDescription className="text-muted-foreground font-medium">
@@ -127,9 +147,9 @@ const Projects = () => {
               </CardHeader>
 
               <CardContent className="pb-4 flex-grow">
-                <ul className="text-sm space-y-2 list-disc pl-5">
+                <ul className="text-sm space-y-2 list-disc pl-5 marker:text-primary">
                   {project.details.map((detail, idx) => (
-                    <li key={idx}>{detail}</li>
+                    <li key={idx} className="text-foreground/90">{detail}</li>
                   ))}
                 </ul>
                 <div className="flex flex-wrap gap-2 mt-4">
@@ -137,7 +157,7 @@ const Projects = () => {
                     <Badge
                       key={tag}
                       variant="outline"
-                      className="bg-primary/5 hover:bg-primary/10 text-primary border-primary/20 font-mono text-xs"
+                      className="bg-primary/5 hover:bg-primary/10 text-primary border-primary/20 font-mono text-xs transition-colors"
                     >
                       {tag}
                     </Badge>
@@ -153,17 +173,18 @@ const Projects = () => {
                 </div>
               </CardContent>
 
-              <CardFooter className="pt-0 flex justify-between border-t border-border/50 mt-auto">
-                <div className="text-xs font-mono text-muted-foreground">
-                  <span className="text-primary">&gt;</span> {project.id}/5
+              <CardFooter className="pt-2 flex justify-between border-t border-border/50 mt-auto">
+                <div className="text-xs font-mono text-muted-foreground flex items-center">
+                  <span className="text-primary mr-1.5">$</span> project_{project.id} 
                 </div>
                 <a
                   href={project.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-1.5 rounded-full bg-muted hover:bg-primary/20 text-foreground transition-colors duration-200"
+                  className="p-2 rounded-full bg-muted hover:bg-primary/20 text-foreground transition-colors duration-200 flex gap-1 items-center text-xs font-mono"
                 >
-                  <Github className="h-4 w-4" />
+                  <Github className="h-4 w-4 mr-1" />
+                  <span>View Code</span>
                 </a>
               </CardFooter>
             </Card>
@@ -175,7 +196,7 @@ const Projects = () => {
             <Button 
               variant="outline" 
               size="lg" 
-              className="rounded-full gap-2 font-mono shadow-sm hover:shadow-md transition-all"
+              className="rounded-full gap-2 font-mono shadow-sm hover:shadow-md transition-all border-primary/30 hover:border-primary/70 hover:bg-primary/10"
               onClick={() => setShowAll(true)}
             >
               <FastForward className="h-5 w-5 mr-1" />
