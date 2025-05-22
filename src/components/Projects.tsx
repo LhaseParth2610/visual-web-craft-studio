@@ -2,22 +2,19 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Github, ExternalLink, Code, Terminal, Beaker, Database } from "lucide-react";
+import { Github, ExternalLink, Code, Terminal, Beaker, Database, FastForward } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-
-type ProjectCategory = "all" | "ai" | "app" | "linux";
+import { Badge } from "@/components/ui/badge";
 
 type Project = {
   id: number;
   title: string;
   description: string;
-  details: string;
-  image: string;
+  details: string[];
   tags: string[];
-  category: ProjectCategory[];
   repoUrl: string;
   date: string;
-  tech: string;
+  icon: React.ReactNode;
 };
 
 const projects: Project[] = [
@@ -25,57 +22,79 @@ const projects: Project[] = [
     id: 1,
     title: "Fantasy Cricket Team Optimizer",
     description: "ML system for fantasy Champions Trophy ODI team selection",
-    details: "Built a machine learning system for a gameathon to optimize fantasy Champions trophy ODI team selection using player data, applying linear programming (PuLP) to maximize performance under constraints.",
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+    details: [
+      "Built a machine learning system for a gameathon to optimize fantasy Champions trophy ODI team selection using player data.",
+      "Applied linear programming (PuLP) to maximize performance under constraints."
+    ],
     tags: ["Python", "PuLP", "BeautifulSoup", "Pandas", "Docker"],
-    category: ["ai", "app"],
     repoUrl: "https://github.com/LhaseParth2610",
     date: "February 2025",
-    tech: "Python, PuLP, BeautifulSoup, Pandas, Docker"
+    icon: <Code className="h-5 w-5 text-primary" />
   },
   {
     id: 2,
-    title: "ResQ: Disaster Management System",
-    description: "Prize-winning disaster management platform for emergency communication",
-    details: "Developed a prize-winning disaster management platform (1st Place, Techathon) to enable swift communication between the public and authorities during emergencies.",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
-    tags: ["Flask", "PostgreSQL", "Google Maps API", "NLP", "CNN"],
-    category: ["app", "ai"],
+    title: "Multi-Disease Predictor",
+    description: "Full-stack ML app to predict 8 critical diseases using integrated models",
+    details: [
+      "Built a full-stack ML app to predict 8 critical diseases using user inputs via an interactive FastAPI + React interface.",
+      "Designed modular backend and responsive frontend with TailwindCSS, enabling cross-device usability.",
+      "Enabled real-time predictions for diseases like Anemia, Heart Disease, Stroke, using scikit-learn models.",
+      "Integrated APIs for user feedback and dynamic retraining to support continuous model improvement.",
+      "Used MLflow for experiment tracking and Docker Compose for easy deployment; CI/CD via GitHub Actions."
+    ],
+    tags: ["Python", "FastAPI", "React", "TailwindCSS", "Docker", "MLflow", "scikit-learn", "GitHub Actions"],
     repoUrl: "https://github.com/LhaseParth2610",
     date: "February 2025",
-    tech: "Flask, PostgreSQL, Google Maps API, NLP, CNN"
+    icon: <Beaker className="h-5 w-5 text-primary" />
   },
   {
     id: 3,
+    title: "Personal AI Assistant",
+    description: "Tkinter-based AI assistant that automates everyday tasks with Mistral 7B",
+    details: [
+      "Developing a sleek Tkinter-based AI assistant that automates everyday tasks like email drafting and e-commerce searches.",
+      "Powered by Mistral 7B and Selenium with queue-based threading for real-time, responsive interactions.",
+      "Implemented Gmail automation allowing natural language prompts to draft and send emails with editable feedback loops.",
+      "Built an e-commerce search tool to fetch and display Amazon product data (name, price, image, etc.) with threaded performance.",
+      "Planned features include social media scheduling, file organizers, budget tracking, and study planners."
+    ],
+    tags: ["Python", "Tkinter", "Mistral 7B", "Selenium", "Threading"],
+    repoUrl: "https://github.com/LhaseParth2610",
+    date: "In Progress – May 2025",
+    icon: <Terminal className="h-5 w-5 text-primary" />
+  },
+  {
+    id: 4,
+    title: "ResQ: Disaster Management System",
+    description: "Prize-winning disaster management platform for emergency communication",
+    details: [
+      "Developed a prize-winning disaster management platform (1st Place, Techathon) to enable swift communication between the public and authorities during emergencies."
+    ],
+    tags: ["Flask", "PostgreSQL", "Google Maps API", "NLP", "CNN"],
+    repoUrl: "https://github.com/LhaseParth2610",
+    date: "February 2025",
+    icon: <Database className="h-5 w-5 text-primary" />
+  },
+  {
+    id: 5,
     title: "EduLite OS - Lightweight Linux",
     description: "Custom Linux distro for low-end hardware in education",
-    details: "Built a custom Linux distro using Cubic to provide a free, offline-capable OS for low-end hardware (2GB RAM), aimed at schools and students with limited tech access.",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
+    details: [
+      "Built a custom Linux distro using Cubic to provide a free, offline-capable OS for low-end hardware (2GB RAM), aimed at schools and students with limited tech access."
+    ],
     tags: ["Xubuntu", "LXQt", "Python", "Cubic", "ZRAM"],
-    category: ["linux"],
     repoUrl: "https://github.com/LhaseParth2610",
     date: "April 2025",
-    tech: "Xubuntu, LXQt, Python, Cubic, ZRAM"
+    icon: <Terminal className="h-5 w-5 text-primary" />
   }
 ];
 
 const Projects = () => {
-  const [activeCategory, setActiveCategory] = useState<ProjectCategory>("all");
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
-
-  const categories: { value: ProjectCategory; label: string }[] = [
-    { value: "all", label: "All Projects" },
-    { value: "ai", label: "AI & ML" },
-    { value: "app", label: "Applications" },
-    { value: "linux", label: "Linux" },
-  ];
-
-  const filteredProjects = projects.filter(
-    (project) => activeCategory === "all" || project.category.includes(activeCategory)
-  );
+  const [showAll, setShowAll] = useState(false);
+  const displayedProjects = showAll ? projects : projects.slice(0, 3);
 
   return (
-    <section id="projects" className="py-24">
+    <section id="projects" className="py-24 bg-gray-50/50 dark:bg-slate-900/20">
       <div className="container px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -87,95 +106,83 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className="flex overflow-x-auto py-4 mb-12 hide-scrollbar justify-center">
-          <div className="flex gap-2">
-            {categories.map((category) => (
-              <Button
-                key={category.value}
-                variant={activeCategory === category.value ? "default" : "outline"}
-                onClick={() => setActiveCategory(category.value)}
-                className="rounded-full text-base px-6"
-              >
-                {category.label}
-              </Button>
-            ))}
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          {displayedProjects.map((project) => (
             <Card 
               key={project.id}
-              className="group overflow-hidden border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg animate-fade-in bg-card/80 backdrop-blur-sm"
-              onMouseEnter={() => setHoveredProject(project.id)}
-              onMouseLeave={() => setHoveredProject(null)}
+              className="group border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg animate-fade-in bg-card/80 backdrop-blur-sm dark:bg-slate-800/50 flex flex-col h-full"
             >
-              <div className="relative aspect-video overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className={cn(
-                    "w-full h-full object-cover transition-transform duration-500",
-                    hoveredProject === project.id ? "scale-110" : "scale-100"
-                  )}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80"></div>
-                <div className="absolute top-4 right-4 bg-primary/90 text-white text-xs py-1 px-2 rounded font-mono">
-                  {project.date}
-                </div>
+              <div className="absolute top-4 right-4 bg-primary/90 text-white text-xs py-1 px-3 rounded-full font-mono">
+                {project.date}
               </div>
-
-              <CardHeader className="relative z-10 pb-2">
+              
+              <CardHeader className="pb-2">
                 <CardTitle className="text-xl font-bold flex items-center gap-2">
-                  {project.id === 1 && <Code className="h-5 w-5 text-primary" />}
-                  {project.id === 2 && <Database className="h-5 w-5 text-primary" />}
-                  {project.id === 3 && <Terminal className="h-5 w-5 text-primary" />}
+                  {project.icon}
                   {project.title}
                 </CardTitle>
-                <CardDescription className="text-muted-foreground">
+                <CardDescription className="text-muted-foreground font-medium">
                   {project.description}
                 </CardDescription>
               </CardHeader>
 
-              <CardContent className="pb-4">
-                <p className="text-sm">{project.details}</p>
+              <CardContent className="pb-4 flex-grow">
+                <ul className="text-sm space-y-2 list-disc pl-5">
+                  {project.details.map((detail, idx) => (
+                    <li key={idx}>{detail}</li>
+                  ))}
+                </ul>
                 <div className="flex flex-wrap gap-2 mt-4">
-                  {project.tags.map((tag) => (
-                    <span
+                  {project.tags.slice(0, 5).map((tag) => (
+                    <Badge
                       key={tag}
-                      className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary font-mono"
+                      variant="outline"
+                      className="bg-primary/5 hover:bg-primary/10 text-primary border-primary/20 font-mono text-xs"
                     >
                       {tag}
-                    </span>
+                    </Badge>
                   ))}
+                  {project.tags.length > 5 && (
+                    <Badge
+                      variant="outline"
+                      className="bg-primary/5 hover:bg-primary/10 text-primary border-primary/20 font-mono text-xs"
+                    >
+                      +{project.tags.length - 5} more
+                    </Badge>
+                  )}
                 </div>
               </CardContent>
 
-              <CardFooter className="pt-0 flex justify-between">
+              <CardFooter className="pt-0 flex justify-between border-t border-border/50 mt-auto">
                 <div className="text-xs font-mono text-muted-foreground">
-                  <span className="text-primary">&gt;</span> {project.tech.split(',')[0]}...
+                  <span className="text-primary">&gt;</span> {project.id}/5
                 </div>
-                <div className="flex gap-2">
-                  <a
-                    href={project.repoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-1.5 rounded-full bg-muted hover:bg-primary/20 text-foreground transition-colors duration-200"
-                  >
-                    <Github className="h-4 w-4" />
-                  </a>
-                </div>
+                <a
+                  href={project.repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-1.5 rounded-full bg-muted hover:bg-primary/20 text-foreground transition-colors duration-200"
+                >
+                  <Github className="h-4 w-4" />
+                </a>
               </CardFooter>
             </Card>
           ))}
         </div>
 
-        <div className="text-center mt-16">
-          <Button variant="outline" size="lg" className="rounded-full gap-2 font-mono">
-            <Github className="h-5 w-5 mr-1" />
-            More on GitHub
-          </Button>
-        </div>
+        {!showAll && (
+          <div className="text-center">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="rounded-full gap-2 font-mono shadow-sm hover:shadow-md transition-all"
+              onClick={() => setShowAll(true)}
+            >
+              <FastForward className="h-5 w-5 mr-1" />
+              View More Projects
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
