@@ -1,5 +1,5 @@
 
-import { ArrowDown, Github, Linkedin, Terminal, Code, Flask } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Terminal, Code, Beaker } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
@@ -36,7 +36,7 @@ const Hero = () => {
             View Projects
           </Button>
           <Button size="lg" variant="outline" className="rounded-full text-base px-8 font-mono">
-            <Flask className="mr-2 h-4 w-4" />
+            <Beaker className="mr-2 h-4 w-4" />
             Contact Me
           </Button>
         </div>
