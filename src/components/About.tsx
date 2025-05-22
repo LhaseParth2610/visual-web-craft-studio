@@ -91,7 +91,7 @@ const About = () => {
                       Pune, Maharashtra
                     </p>
                     <p className="mt-2 font-mono text-sm text-muted-foreground">
-                      <span className="text-primary">></span> Studying cutting-edge AI and data science technologies
+                      <span className="text-primary">&gt;</span> Studying cutting-edge AI and data science technologies
                     </p>
                   </div>
                 </div>
