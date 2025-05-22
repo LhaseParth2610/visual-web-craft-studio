@@ -21,6 +21,53 @@ type Project = {
 const projects: Project[] = [
   {
     id: 1,
+    title: "Fantasy Cricket Team Optimizer",
+    description: "ML system for fantasy Champions Trophy ODI team selection",
+    details: [
+      "Built a machine learning system for a gameathon to optimize fantasy cricket ODI team selection using player data,applying linear programming (PuLP) to maximize performance under constraints.",
+      "Scraped batting, bowling, and fielding stats from ESPN Cricinfo with Beautiful Soup, calculating form scores via exponential decay.",
+      "Designed a modular pipeline for data processing, form computation, and team optimization, enhancing scalability.",
+      "Incorporated exponential decay weighting and percentile normalization to ensure recent performances are prioritized in player form calculations."
+
+    ],
+    tags: ["Python", "PuLP", "BeautifulSoup", "Pandas", "Docker"],
+    repoUrl: "https://github.com/LhaseParth2610/fantasy-sports-machine-learning",
+    date: "February 2025",
+    icon: <Terminal className="h-5 w-5 text-primary" />
+  },
+  {
+    id: 2,
+    title: "EduLite OS - Lightweight Linux",
+    description: "Custom Linux distro for low-end hardware in education",
+    details: [
+      "Built a custom Linux distro using Cubic to provide a free, offline-capable OS for low-end hardware (2GB RAM), aimed at schools and students with limited tech access.",
+      "Pre-installed offline tools like Kolibri, teacher dashboards, and interactive Python apps under a colorful LXQt interface—ensuring full functionality in low or no internet areas.",
+      "Optimized performance using ZRAM and systemd tweaks; minimized background services,bloatware for smooth usage",
+      "Enabled access to quality education by supporting affordable or refurbished hardware, empowering under-resourced schools and students",
+      "Published ISO and installation guide at Edulite-OS.vercel.app/."
+    ],
+    tags: ["Xubuntu", "LXQt", "Python", "Cubic", "ZRAM"],
+    repoUrl: "https://github.com/LhaseParth2610/EduliteOS",
+    date: "April 2025",
+    icon: <Terminal className="h-5 w-5 text-primary" />
+  },
+  {
+    id: 3,
+    title: "ResQ: Disaster Management System",
+    description: "Prize-winning disaster management platform for emergency communication",
+    details: [
+      "Developed a prize-winning disaster management platform (1st Place, Techathon) to enable swift communication between the public and authorities during emergencies.",
+      "Integrated crowd-sourced reports (text/images) authenticated via NLP and CNN, alongside GDACS API, to generate real-time danger zone heatmaps with clickable image overlays.",
+      "Designed user features: SOS alerts with location-based distress emails, safe navigation routes avoiding disaster zones, and an intuitive reporting interface.",
+      "Built authority tools: real-time incident alerts, interactive maps, resource tracking, and secure coordination, enhancing emergency response efficiency"
+    ],
+    tags: ["Flask", "PostgreSQL", "Google Maps API", "NLP", "CNN"],
+    repoUrl: "https://github.com/LhaseParth2610/ResQ",
+    date: "February 2025",
+    icon: <Terminal className="h-5 w-5 text-primary" />
+  },
+  {
+    id: 4,
     title: "Multi-Disease Predictor",
     description: "Full-stack ML app to predict 8 critical diseases using integrated models",
     details: [
@@ -31,12 +78,12 @@ const projects: Project[] = [
       "Used MLflow for experiment tracking and Docker Compose for easy deployment; CI/CD via GitHub Actions."
     ],
     tags: ["Python", "FastAPI", "React", "TailwindCSS", "Docker", "MLflow", "scikit-learn", "GitHub Actions"],
-    repoUrl: "https://github.com/LhaseParth2610",
+    repoUrl: "https://github.com/rohitkshirsagar19/multi-disease-predictor",
     date: "February 2025",
-    icon: <Beaker className="h-5 w-5 text-primary" />
+    icon: <Terminal className="h-5 w-5 text-primary" />
   },
   {
-    id: 2,
+    id: 5,
     title: "Personal AI Assistant",
     description: "Tkinter-based AI assistant that automates everyday tasks with Mistral 7B",
     details: [
@@ -47,13 +94,13 @@ const projects: Project[] = [
       "Planned features include social media scheduling, file organizers, budget tracking, and study planners."
     ],
     tags: ["Python", "Tkinter", "Mistral 7B", "Selenium", "Threading"],
-    repoUrl: "https://github.com/LhaseParth2610",
+    repoUrl: "https://github.com/LhaseParth2610/Personal-Assistant",
     date: "May 2025",
     icon: <Terminal className="h-5 w-5 text-primary" />,
     inProgress: true
   },
   {
-    id: 3,
+    id: 6,
     title: "Waste Classification Pipeline",
     description: "End-to-end deep learning system for waste classification across six categories",
     details: [
@@ -65,45 +112,8 @@ const projects: Project[] = [
       "Automated project execution via CLI-enabled Python scripts and parameterized config files (params.yaml)."
     ],
     tags: ["Python", "Keras", "Docker", "MLflow", "YAML", "CNN", "scikit-learn"],
-    repoUrl: "https://github.com/LhaseParth2610",
+    repoUrl: "https://github.com/LhaseParth2610/Wasteclassification",
     date: "February 2025",
-    icon: <FileCode className="h-5 w-5 text-primary" />
-  },
-  {
-    id: 4,
-    title: "Fantasy Cricket Team Optimizer",
-    description: "ML system for fantasy Champions Trophy ODI team selection",
-    details: [
-      "Built a machine learning system for a gameathon to optimize fantasy Champions trophy ODI team selection using player data.",
-      "Applied linear programming (PuLP) to maximize performance under constraints."
-    ],
-    tags: ["Python", "PuLP", "BeautifulSoup", "Pandas", "Docker"],
-    repoUrl: "https://github.com/LhaseParth2610",
-    date: "February 2025",
-    icon: <Code className="h-5 w-5 text-primary" />
-  },
-  {
-    id: 5,
-    title: "ResQ: Disaster Management System",
-    description: "Prize-winning disaster management platform for emergency communication",
-    details: [
-      "Developed a prize-winning disaster management platform (1st Place, Techathon) to enable swift communication between the public and authorities during emergencies."
-    ],
-    tags: ["Flask", "PostgreSQL", "Google Maps API", "NLP", "CNN"],
-    repoUrl: "https://github.com/LhaseParth2610",
-    date: "February 2025",
-    icon: <Database className="h-5 w-5 text-primary" />
-  },
-  {
-    id: 6,
-    title: "EduLite OS - Lightweight Linux",
-    description: "Custom Linux distro for low-end hardware in education",
-    details: [
-      "Built a custom Linux distro using Cubic to provide a free, offline-capable OS for low-end hardware (2GB RAM), aimed at schools and students with limited tech access."
-    ],
-    tags: ["Xubuntu", "LXQt", "Python", "Cubic", "ZRAM"],
-    repoUrl: "https://github.com/LhaseParth2610",
-    date: "April 2025",
     icon: <Terminal className="h-5 w-5 text-primary" />
   }
 ];

@@ -26,7 +26,7 @@ const Hero = () => {
           <div className="h-12 md:h-16 flex items-center justify-center">
             <div className="typewriter-container flex items-center justify-center">
               <span className="typewriter font-mono text-lg md:text-2xl text-primary py-1">
-                Coding minds, shaping mine
+                Coding minds, shaping mine.
               </span>
             </div>
           </div>
@@ -38,14 +38,14 @@ const Hero = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 mt-8 animate-fade-in">
-          <Button size="lg" className="rounded-full text-base px-8 font-mono group shadow-md hover:shadow-lg transition-all">
-            <Code className="mr-2 h-4 w-4 group-hover:animate-pulse" />
-            <a href="#projects" className="w-full h-full">View Projects</a>
-          </Button>
-          <Button size="lg" variant="outline" className="rounded-full text-base px-8 font-mono shadow-sm hover:shadow-md transition-all border-primary/30 hover:border-primary/70 hover:bg-primary/10">
-            <Beaker className="mr-2 h-4 w-4" />
-            <a href="#contact" className="w-full h-full">Contact Me</a>
-          </Button>
+              <Button size="lg" className="rounded-full text-base px-8 py-3 font-mono group shadow-md hover:shadow-lg transition-all">
+          <Code className="mr-2 h-4 w-4 group-hover:animate-pulse" />
+          <a href="#projects" className="w-full h-full">View Projects</a>
+      </Button>
+      <Button size="lg" variant="outline" className="rounded-full text-base px-8 py-3 font-mono shadow-sm hover:shadow-md transition-all border-primary/30 hover:border-primary/70 hover:bg-primary/10">
+          <Beaker className="mr-2 h-4 w-4" />
+          <a href="#contact" className="w-full h-full">Contact Me</a>
+      </Button>
         </div>
 
         <div className="flex gap-4 mt-4">

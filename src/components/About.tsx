@@ -15,7 +15,7 @@ const About = () => {
             <div className="w-full aspect-square relative z-10 rounded-2xl overflow-hidden shadow-xl animate-fade-right">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/30 mix-blend-multiply"></div>
               <img 
-                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+                src="/images/parth.jpg"
                 alt="Profile" 
                 className="w-full h-full object-cover"
               />

@@ -27,6 +27,8 @@ const Skills = () => {
     { name: "TensorFlow", level: 85, category: "frameworks" },
     { name: "Streamlit", level: 80, category: "frameworks" },
     { name: "Flask", level: 85, category: "frameworks" },
+    { name: "Fast Api", level: 75, category: "frameworks" },
+
     
     // Tools
     { name: "VS Code", level: 90, category: "tools" },
@@ -43,6 +45,7 @@ const Skills = () => {
     { name: "Scikit-learn", level: 85, category: "libraries" },
     { name: "Seaborn", level: 75, category: "libraries" },
     { name: "BeautifulSoup", level: 80, category: "libraries" },
+    { name: "Selenium", level: 85, category: "libraries" },
   ];
 
   const filteredSkills = skills.filter((skill) => skill.category === activeCategory);

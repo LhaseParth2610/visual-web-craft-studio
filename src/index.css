@@ -184,3 +184,36 @@ a {
 button, a[role="button"] {
   @apply outline-none focus:ring-2 focus:ring-primary/40 focus:ring-offset-2 focus:ring-offset-background;
 }
+
+/* typewriter effect */
+.typewriter {
+  display: inline-block;
+  animation: typing 3s steps(30, end) forwards, blink 0.5s step-end 6, hide-cursor 0s 3.5s forwards;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid currentColor;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
+}
+
+@keyframes hide-cursor {
+  to {
+    border-right: none;
+  }
+}
